@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+zip -r ${BOSH_INSTALL_TARGET}/yapp-buildpack.zip *
+
+

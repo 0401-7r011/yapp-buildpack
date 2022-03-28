@@ -1,0 +1,8 @@
+---
+name: yapp-buildpack
+templates: {}
+
+packages:
+- yapp-buildpack-cflinuxfs3
+
+properties: {}

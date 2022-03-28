@@ -1,0 +1,20 @@
+#!/bin/bash
+
+build_dir=$1
+
+# Golang bosh package 0.99.0
+golang_package_url="https://s3.amazonaws.com/bosh-packages-golang-release/c396c373-b950-4f24-56f2-5b1d69a9a71f"
+curl "${golang_package_url}" \
+  --silent \
+  --output "/tmp/golang.tgz"
+mkdir /tmp/golang_package
+tar xzf "/tmp/golang.tgz" -C /tmp/golang_package
+pushd /tmp/golang_package > /dev/null
+  tar xzf go*.linux-amd64.tar.gz
+  export PATH="/tmp/golang_package/go/bin:${PATH}"
+popd > /dev/null
+
+mkdir /tmp/gopath
+export GOPATH=/tmp/gopath
+go install github.com/reidmit/yapp/cmd/yapp@latest
+mv $GOPATH/bin/yapp $build_dir/

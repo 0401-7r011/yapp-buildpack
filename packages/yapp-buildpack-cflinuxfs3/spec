@@ -1,0 +1,5 @@
+---
+name: yapp-buildpack-cflinuxfs3
+files:
+- bin/*
+- manifest.yml
